@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Practical Application Activity</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+      color: #222;
+    }
+    h1 { border-bottom: 3px solid #4682b4; padding-bottom: 8px; }
+    h2 {
+      background: #f0f4f8;
+      padding: 8px 12px;
+      border-left: 5px solid #4682b4;
+      margin-top: 40px;
+    }
+    figure { margin: 20px 0; }
+    figcaption { font-style: italic; color: #555; margin-top: 6px; }
+    img { border-radius: 6px; }
+    nav a { margin-right: 15px; }
+    blockquote {
+      border-left: 4px solid #ccc;
+      margin: 10px 0;
+      padding: 8px 16px;
+      background: #fafafa;
+      font-style: italic;
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    mark { background: #ffe58a; }
+    footer { margin-top: 50px; font-size: 0.9em; color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1 id="main-heading">My HTML Practical Application Activity</h1>
+
+  <!-- Simple nav bar used for the internal link requirement -->
+  <nav>
+    <a href="#images-section">Images</a>
+    <a href="#hyperlinks-section">Hyperlinks</a>
+    <a href="#multimedia-section">Multimedia</a>
+    <a href="#tags-section">Useful Tags</a>
+    <a href="#dom-section">HTML DOM</a>
+  </nav>
+
+  <!-- ============================= -->
+  <!-- 1. IMAGES -->
+  <!-- ============================= -->
+  <h2 id="images-section">Images</h2>
+
+    <p>Below are three images, each with a descriptive caption. The first image
+    also has an explicit width and height.</p>
+
+  <figure id="figure-photo1">
+      <img src="images/Desktop WP.jpg" alt="Black and pink Isaiah 60:22 wallpaper with butterflies and a verse"
+         width="400" height="267">
+      <figcaption>Figure 1: Isaiah 60:22 wallpaper decorated with pink butterflies.</figcaption>
+  </figure>
+
+    <figure>
+      <img src="images/Software Tools VA.png" alt="Virtual assistant profile poster showing design, Google Workspace, WordPress, and bookkeeping services"
+        width="300">
+      <figcaption>Figure 2: My virtual assistant profile and the software tools and services I offer.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="images/UI & UX DESIGN.png" alt="UI/UX design portfolio poster with a designer, mobile website mockup, and design message"
+        width="300">
+      <figcaption>Figure 3: A UI/UX design portfolio poster featuring a mobile website concept.</figcaption>
+    </figure>
+
+  <!-- ============================= -->
+  <!-- 2. HYPERLINKS -->
+  <!-- ============================= -->
+  <h2 id="hyperlinks-section">Hyperlinks</h2>
+
+  <ul>
+    <li>
+      <!-- Internal link: points to another section further down this same page -->
+      Internal link: <a href="#dom-section">Jump to my HTML DOM section</a>
+    </li>
+    <li>
+      <!-- External link: opens in a new tab -->
+      External link: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+        target="_blank" rel="noopener noreferrer">MDN HTML Documentation</a>
+    </li>
+    <li>
+      <!-- Email link using the mailto scheme -->
+      Email link: <a href="mailto:kirsteingenzen.nojapa@carsu.edu.ph">Send me an email</a>
+    </li>
+    <li>
+      Anchor link: <a href="#images-section">Back to the Images section</a>
+    </li>
+  </ul>
+
+  <!-- ============================= -->
+  <!-- 3. MULTIMEDIA -->
+  <!-- ============================= -->
+  <h2 id="multimedia-section">Multimedia</h2>
+
+  <h3>Audio</h3>
+  <audio controls>
+    <source src="media/Simple Trailer Impact Sound Effect.mp3" type="audio/mpeg">
+    Your browser does not support the audio element. You can
+    <a href="media/Simple Trailer Impact Sound Effect.mp3">download the audio file</a> instead.
+  </audio>
+
+  <h3>Video</h3>
+  <video controls width="400">
+    <source src="media/myself.mp4" type="video/mp4">
+    Your browser does not support the video element. You can
+    <a href="media/myself.mp4">download the video file</a> instead.
+  </video>
+
+  <!-- ============================= -->
+  <!-- 4. USEFUL TAGS -->
+  <!-- ============================= -->
+  <h2 id="tags-section">Useful Tags</h2>
+
+  <!-- Using blockquote to highlight a quote related to my topic -->
+  <blockquote>
+    "The Web does not just connect machines, it connects people." &mdash; Tim Berners-Lee
+  </blockquote>
+
+  <!-- Using abbr to give the full meaning of an abbreviation on hover -->
+  <p>
+    I used <abbr title="HyperText Markup Language">HTML</abbr> and
+    <abbr title="Cascading Style Sheets">CSS</abbr> to build this page.
+  </p>
+
+  <!-- Using mark to highlight an important term in the text -->
+  <p>The most important tag I learned this week was the <mark>&lt;figure&gt;</mark> element.</p>
+
+  <!-- Using code and pre together to show a small snippet of code -->
+  <p>Here is a short snippet showing how I linked my stylesheet rule for headings:</p>
+  <pre><code>h2 {
+  background: #f0f4f8;
+  border-left: 5px solid #4682b4;
+}</code></pre>
+
+  <!-- Using an HTML character entity to display the copyright symbol -->
+  <p>&copy; 2026 Kirstein Genzen Nojapa. All rights reserved.</p>
+
+  <!-- ============================= -->
+  <!-- 5. HTML DOM -->
+  <!-- ============================= -->
+  <h2 id="dom-section">HTML DOM</h2>
+
+  <p>
+    This section explains the HTML DOM. Open this page in your browser, right-click,
+    and choose <strong>Inspect</strong> to see the DOM tree in DevTools. Take a
+    screenshot of the Elements panel showing at least 5 nested elements and save it
+    as <code>dom-tree.png</code> in your project folder.
+  </p>
+
+  <div id="dom-demo-list">
+    <p>Below is a small nested list you can use for your DOM screenshot:</p>
+    <ul id="sample-list">
+      <li id="list-item-1">First item</li>
+      <li id="list-item-2">Second item</li>
+      <li id="list-item-3">Third item</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Submitted for the HTML Practical Application Activity.</p>
+  </footer>
+
+  <!--
+    In the DOM tree, the html element contains the body element. Inside the body,
+    the div with id="dom-demo-list" contains the ul with id="sample-list".
+    The ul is the parent of the three li elements, which appear as its children.
+    The figure with id="figure-photo1" also contains an img and a figcaption as siblings.
+  -->
+
+</body>
+</html>
