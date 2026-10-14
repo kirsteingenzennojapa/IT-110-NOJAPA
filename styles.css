@@ -1,0 +1,219 @@
+/* ============================
+   1. RESET
+   ============================ */
+
+/* Universal selector: simple reset + border-box for predictable sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================
+   2. BASE / TYPOGRAPHY
+   ============================ */
+
+body {
+  font-family: Arial, sans-serif;      /* font-family */
+  font-size: 1rem;                     /* rem unit */
+  background-color: whitesmoke;        /* color by NAME */
+  color: #333333;                      /* color by HEX */
+  line-height: 1.5;
+  padding: 20px;
+}
+
+/* Grouping selector: same rule for h1 and h2 */
+h1, h2 {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  color: navy;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
+
+h2 {
+  font-size: 1.4em;                    /* em unit */
+  margin-bottom: 10px;
+}
+
+/* Pseudo-element ::before adds a decorative star before every h2 */
+h2::before {
+  content: "\2605  ";
+  color: goldenrod;
+}
+
+/* ============================
+   3. CASCADE DEMO
+   ============================ */
+
+/* Rule 1: type selector (specificity 1) */
+p {
+  color: gray;
+}
+
+/* Rule 2: class selector (specificity 10), same element (.intro paragraph).
+   WINNER: .intro (rule 2) wins and the intro text is purple-ish. A class
+   selector (10) is more specific than a type selector (1), so it wins
+   even if it appeared earlier in the file. */
+.intro {
+  color: rgb(102, 51, 153);            /* color by rgb() */
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Pseudo-element ::first-letter enlarges the first letter of the intro */
+.intro::first-letter {
+  font-size: 1.6em;
+  color: crimson;
+}
+
+/* ============================
+   4. LAYOUT (header, footer, cards)
+   ============================ */
+
+header,
+footer {
+  text-align: center;                  /* centers header and footer text */
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* .card: fixed width, padding, border (width + style + color in ONE line),
+   border-radius, centered with margin auto, spaced with margin-bottom.
+   TOTAL RENDERED WIDTH = 500px, because box-sizing: border-box is set
+   globally, so the 500px already INCLUDES padding (20px x 2) and
+   border (3px x 2). */
+.card {
+  width: 500px;
+  padding: 20px;
+  border: 3px solid #4a90d9;
+  border-radius: 12px;
+  margin: 0 auto 20px;                 /* top 0, left/right auto, bottom 20px */
+  background-color: rgba(255, 255, 255, 0.9);  /* color by rgba() */
+}
+
+/* Descendant combinator: every <p> inside a .card */
+.card p {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+/* ID selector: makes #about stand out + positioned parent for the badge */
+#about {
+  position: relative;
+  border-color: darkorange;
+  background-color: #fff8e6;
+}
+
+/* Badge in the top-right corner of #about (absolute inside relative) */
+#about::after {
+  content: "Featured";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: darkorange;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ============================
+   5. NAVIGATION (display: inline-block + :hover)
+   ============================ */
+
+nav {
+  margin-top: 10px;
+}
+
+/* inline-block lets width/padding/height behave like a block
+   while the links still sit on one line */
+nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 4px;
+  background-color: navy;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* Pseudo-class :hover */
+nav a:hover {
+  background-color: darkorange;
+  color: black;
+}
+
+/* ============================
+   6. SKILLS LIST (Flexbox)
+   ============================ */
+
+.skills-list {
+  display: flex;                       /* flex container */
+  justify-content: center;             /* main axis alignment */
+  gap: 12px;                           /* space between items */
+  list-style: none;
+}
+
+/* Child combinator: only direct <li> children of .skills-list */
+.skills-list > li {
+  background-color: #4a90d9;
+  color: white;
+  padding: 4px 14px;
+  border-radius: 20px;                 /* tag / pill look */
+  font-size: 0.85rem;
+}
+
+/* ============================
+   7. DISPLAY AND VISIBILITY
+   ============================ */
+
+/* display: none removes the element completely, so NO space is left. */
+.hide-none {
+  display: none;
+}
+
+/* visibility: hidden hides the element visually, but it still occupies
+   its space. On the page, the "Invisible" paragraph shows up as an empty
+   gap between the Notes heading and the visible paragraph, while the
+   display: none paragraph leaves no gap at all. */
+.hide-visibility {
+  visibility: hidden;
+}
+
+/* Fixed height + overflow: auto, so a scrollbar appears when the
+   text is taller than the box. */
+.scroll-box {
+  height: 120px;
+  overflow: auto;
+}
+
+/* ============================
+   REFLECTION ANSWERS
+   ============================
+
+   1. In Part A, the .intro rule (a class selector, specificity 10) beat
+      the p rule (a type selector, specificity 1), so the intro paragraph
+      is purple instead of gray. Specificity is checked first, and source
+      order only matters when two rules have equal specificity (in that
+      case the later rule wins).
+
+   2. With content-box, width: 500px applies only to the content area, so
+      padding and border are added on top:
+      500 (content) + 20 + 20 (left/right padding) + 3 + 3 (left/right
+      border) = 546px total rendered width.
+      With border-box, the total stays 500px.
+
+   3. I would choose visibility: hidden when the layout must NOT shift
+      after hiding the element, for example a tooltip or a menu item that
+      appears and disappears, or an element whose space should be kept so
+      the surrounding content doesn't jump around. I would use
+      display: none when the element should leave the layout entirely.
+*/
