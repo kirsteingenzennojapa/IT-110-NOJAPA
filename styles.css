@@ -2,7 +2,6 @@
    1. RESET
    ============================ */
 
-/* Universal selector: simple reset + border-box for predictable sizing */
 * {
   margin: 0;
   padding: 0;
@@ -14,19 +13,18 @@
    ============================ */
 
 body {
-  font-family: Arial, sans-serif;      /* font-family */
-  font-size: 1rem;                     /* rem unit */
-  background-color: whitesmoke;        /* color by NAME */
-  color: #333333;                      /* color by HEX */
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  background-color: whitesmoke;
+  color: #303632;
   line-height: 1.5;
   padding: 20px;
 }
 
-/* Grouping selector: same rule for h1 and h2 */
 h1, h2 {
   font-family: Georgia, serif;
   font-weight: bold;
-  color: navy;
+  color: #252b27;
 }
 
 h1 {
@@ -34,39 +32,39 @@ h1 {
 }
 
 h2 {
-  font-size: 1.4em;                    /* em unit */
+  font-size: 1.4em;
   margin-bottom: 10px;
 }
 
-/* Pseudo-element ::before adds a decorative star before every h2 */
 h2::before {
-  content: "\2605  ";
-  color: goldenrod;
+  content: "";
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-right: 0.55rem;
+  background-color: #68776c;
+  border-radius: 50%;
+  vertical-align: middle;
 }
 
 /* ============================
    3. CASCADE DEMO
    ============================ */
 
-/* Rule 1: type selector (specificity 1) */
 p {
   color: gray;
 }
 
-/* Rule 2: class selector (specificity 10), same element (.intro paragraph).
-   WINNER: .intro (rule 2) wins and the intro text is purple-ish. A class
-   selector (10) is more specific than a type selector (1), so it wins
-   even if it appeared earlier in the file. */
+/* .intro wins over p because a class selector is more specific than a type selector. */
 .intro {
-  color: rgb(102, 51, 153);            /* color by rgb() */
+  color: rgb(76, 92, 82);
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-/* Pseudo-element ::first-letter enlarges the first letter of the intro */
 .intro::first-letter {
   font-size: 1.6em;
-  color: crimson;
+  color: #526358;
 }
 
 /* ============================
@@ -75,7 +73,7 @@ p {
 
 header,
 footer {
-  text-align: center;                  /* centers header and footer text */
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -84,45 +82,39 @@ footer {
   font-size: 0.9rem;
 }
 
-/* .card: fixed width, padding, border (width + style + color in ONE line),
-   border-radius, centered with margin auto, spaced with margin-bottom.
-   TOTAL RENDERED WIDTH = 500px, because box-sizing: border-box is set
-   globally, so the 500px already INCLUDES padding (20px x 2) and
-   border (3px x 2). */
+/* With border-box, the rendered card width is 500px, including 40px padding and 2px of borders. */
 .card {
   width: 500px;
+  max-width: 100%;
   padding: 20px;
-  border: 3px solid #4a90d9;
-  border-radius: 12px;
-  margin: 0 auto 20px;                 /* top 0, left/right auto, bottom 20px */
-  background-color: rgba(255, 255, 255, 0.9);  /* color by rgba() */
+  border: 1px solid #d9dedb;
+  border-radius: 6px;
+  margin: 0 auto 20px;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* Descendant combinator: every <p> inside a .card */
 .card p {
   font-size: 0.95rem;
   margin-bottom: 8px;
 }
 
-/* ID selector: makes #about stand out + positioned parent for the badge */
 #about {
   position: relative;
-  border-color: darkorange;
-  background-color: #fff8e6;
+  border-color: #76877b;
+  background-color: #f0f3f0;
 }
 
-/* Badge in the top-right corner of #about (absolute inside relative) */
 #about::after {
   content: "Featured";
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: darkorange;
+  background-color: #526358;
   color: white;
   font-size: 0.7rem;
   font-weight: bold;
   padding: 2px 8px;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 /* ============================
@@ -133,22 +125,19 @@ nav {
   margin-top: 10px;
 }
 
-/* inline-block lets width/padding/height behave like a block
-   while the links still sit on one line */
 nav a {
   display: inline-block;
   padding: 8px 16px;
   margin: 0 4px;
-  background-color: navy;
+  background-color: #29332d;
   color: white;
   text-decoration: none;
   border-radius: 6px;
 }
 
-/* Pseudo-class :hover */
 nav a:hover {
-  background-color: darkorange;
-  color: black;
+  background-color: #e2e8e3;
+  color: #29332d;
 }
 
 /* ============================
@@ -156,18 +145,17 @@ nav a:hover {
    ============================ */
 
 .skills-list {
-  display: flex;                       /* flex container */
-  justify-content: center;             /* main axis alignment */
-  gap: 12px;                           /* space between items */
+  display: flex;
+  justify-content: center;
+  gap: 12px;
   list-style: none;
 }
 
-/* Child combinator: only direct <li> children of .skills-list */
 .skills-list > li {
-  background-color: #4a90d9;
-  color: white;
+  background-color: #e5ebe6;
+  color: #344238;
   padding: 4px 14px;
-  border-radius: 20px;                 /* tag / pill look */
+  border-radius: 4px;
   font-size: 0.85rem;
 }
 
@@ -175,7 +163,6 @@ nav a:hover {
    7. DISPLAY AND VISIBILITY
    ============================ */
 
-/* display: none removes the element completely, so NO space is left. */
 .hide-none {
   display: none;
 }
@@ -188,8 +175,6 @@ nav a:hover {
   visibility: hidden;
 }
 
-/* Fixed height + overflow: auto, so a scrollbar appears when the
-   text is taller than the box. */
 .scroll-box {
   height: 120px;
   overflow: auto;
@@ -199,16 +184,15 @@ nav a:hover {
    REFLECTION ANSWERS
    ============================
 
-   1. In Part A, the .intro rule (a class selector, specificity 10) beat
-      the p rule (a type selector, specificity 1), so the intro paragraph
-      is purple instead of gray. Specificity is checked first, and source
+  1. In Part A, the .intro rule (a class selector) beat the p rule (a type
+    selector), so the intro paragraph is muted green instead of gray. Specificity is checked first, and source
       order only matters when two rules have equal specificity (in that
       case the later rule wins).
 
    2. With content-box, width: 500px applies only to the content area, so
       padding and border are added on top:
-      500 (content) + 20 + 20 (left/right padding) + 3 + 3 (left/right
-      border) = 546px total rendered width.
+      500 (content) + 20 + 20 (left/right padding) + 1 + 1 (left/right
+      border) = 542px total rendered width.
       With border-box, the total stays 500px.
 
    3. I would choose visibility: hidden when the layout must NOT shift
